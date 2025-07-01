@@ -3,13 +3,17 @@
     android:id="@+id/dialog_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
+
+
     <!-- Фон -->
     <ImageView
         android:id="@+id/background_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/background_image" />
+        android:src="@drawable/frame_1" />
 
     <com.example.kostromaquest.CharacterView
         android:id="@+id/character_view"
@@ -17,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="32dp" />
+
     <com.example.kostromaquest.CharacterView
         android:id="@+id/yeen"
         android:layout_width="match_parent"
@@ -40,5 +45,12 @@
         android:layout_gravity="top|start"
         android:layout_margin="16dp" />
 
+    <View
+        android:id="@+id/dim_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FF000000"
+        android:alpha="0"
+        android:visibility="gone" />
 
 </FrameLayout>

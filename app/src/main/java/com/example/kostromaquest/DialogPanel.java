@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,6 +14,10 @@ public class DialogPanel extends FrameLayout {
     private TextView characterNameView;
     private TextView dialogTextView;
     private ImageView backgroundImageView;
+
+    private Handler handler;
+    private Runnable textRunnable;
+    private boolean isAnimating = false;
 
     public DialogPanel(Context context) {
         super(context);
@@ -34,43 +39,78 @@ public class DialogPanel extends FrameLayout {
         characterNameView = findViewById(R.id.character_name);
         dialogTextView = findViewById(R.id.dialog_text);
         backgroundImageView = findViewById(R.id.dialog_background);
+
+        handler = new Handler();
     }
 
-    // Отображение данных из TextElement
     public void setDialog(TextElement element) {
         if (element != null) {
             characterNameView.setText(element.getCharacterName());
+
+            // Если сейчас идёт анимация, прерываем её
+            if (isAnimating) {
+                finishTypingImmediately(); // мгновенно показать весь текст
+            }
+
             animateDialogText(element.getText());
         }
     }
 
-
-    // (Необязательно) Можно менять фон программно
     public void setDialogBackground(int drawableResId) {
         backgroundImageView.setImageResource(drawableResId);
     }
-    public void animateDialogText(String fullText) {
-        characterNameView.setAlpha(1f); // Имя сразу видно
-        dialogTextView.setAlpha(1f);    // Видимость текста включена
-        dialogTextView.setText("");     // Очищаем перед началом
+
+    private void animateDialogText(String fullText) {
+        dialogTextView.setAlpha(1f);
+        dialogTextView.setText("");
 
         final int[] index = {0};
-        final long delay = 40; // скорость: меньше = быстрее
+        final long delay = 30;
+        isAnimating = true;
 
-        final Handler handler = new Handler();
-        Runnable runnable = new Runnable() {
+        textRunnable = new Runnable() {
             @Override
             public void run() {
                 if (index[0] < fullText.length()) {
                     dialogTextView.append(String.valueOf(fullText.charAt(index[0])));
                     index[0]++;
                     handler.postDelayed(this, delay);
+                } else {
+                    isAnimating = false;
                 }
             }
         };
-        handler.post(runnable);
+        handler.post(textRunnable);
     }
 
+    public void finishTypingImmediately() {
+        if (textRunnable != null) {
+            handler.removeCallbacks(textRunnable);
+        }
 
+        // Показываем весь текст сразу
+        TextElement current = ((FirstDialogPart) getContext()).getCurrentTextElement();
+        if (current != null) {
+            dialogTextView.setText(current.getText());
+        }
 
+        isAnimating = false;
+    }
+
+    ///сокрытие интерфейса диалогового окна
+    public void hide() {
+        this.setVisibility(View.GONE);
+    }
+    ///возвращение интерфейса диалогового окна
+    public void show() {
+        this.setVisibility(View.VISIBLE);
+    }
+
+    public boolean isAnimating() {
+        return isAnimating;
+    }
 }
+
+
+
+
