@@ -1,6 +1,7 @@
 package com.example.kostromaquest;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
@@ -39,12 +40,37 @@ public class DialogPanel extends FrameLayout {
     public void setDialog(TextElement element) {
         if (element != null) {
             characterNameView.setText(element.getCharacterName());
-            dialogTextView.setText(element.getText());
+            animateDialogText(element.getText());
         }
     }
+
 
     // (Необязательно) Можно менять фон программно
     public void setDialogBackground(int drawableResId) {
         backgroundImageView.setImageResource(drawableResId);
     }
+    public void animateDialogText(String fullText) {
+        characterNameView.setAlpha(1f); // Имя сразу видно
+        dialogTextView.setAlpha(1f);    // Видимость текста включена
+        dialogTextView.setText("");     // Очищаем перед началом
+
+        final int[] index = {0};
+        final long delay = 40; // скорость: меньше = быстрее
+
+        final Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                if (index[0] < fullText.length()) {
+                    dialogTextView.append(String.valueOf(fullText.charAt(index[0])));
+                    index[0]++;
+                    handler.postDelayed(this, delay);
+                }
+            }
+        };
+        handler.post(runnable);
+    }
+
+
+
 }

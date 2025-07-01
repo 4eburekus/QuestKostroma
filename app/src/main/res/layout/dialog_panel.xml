@@ -3,7 +3,7 @@
     android:id="@+id/dialog_panel_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:padding="1dp">
 
     <!-- Фоновое изображение -->
     <ImageView
@@ -19,8 +19,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:layout_gravity="bottom">
+        android:padding="5dp"
+        android:layout_gravity="top">
 
         <TextView
             android:id="@+id/character_name"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:text="Имя"
             android:textColor="#1B1A1A"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -38,6 +38,6 @@
             android:layout_marginTop="4dp"
             android:text="Текст реплики"
             android:textColor="#2E2B2B"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 </FrameLayout>

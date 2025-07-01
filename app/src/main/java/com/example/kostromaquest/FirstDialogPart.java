@@ -76,6 +76,7 @@ public class FirstDialogPart extends AppCompatActivity {
         TextElement current = dialogArray.getCurrentElement();
         if (current != null) {
             dialogPanel.setDialog(current);
+
         }
 
 

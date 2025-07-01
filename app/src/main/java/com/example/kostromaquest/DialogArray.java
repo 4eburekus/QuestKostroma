@@ -81,4 +81,6 @@ public class DialogArray {
     public boolean isAtStart() {
         return currentIndex == 0;
     }
+
+
 }
