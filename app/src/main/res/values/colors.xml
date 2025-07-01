@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="md_theme_light_primary">#FF5722</color> <!-- основной цвет -->
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#FFCCBC</color>
+    <color name="md_theme_light_onPrimaryContainer">#000000</color>
+
+    <color name="md_theme_dark_primary">#FF8A65</color>
+    <color name="md_theme_dark_onPrimary">#000000</color>
+    <color name="md_theme_dark_primaryContainer">#4E342E</color>
+    <color name="md_theme_dark_onPrimaryContainer">#FFFFFF</color>
+
+    <!-- Можно добавить другие цвета: secondary, background, surface и т.д. -->
 </resources>
