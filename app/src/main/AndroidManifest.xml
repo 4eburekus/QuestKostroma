@@ -26,6 +26,9 @@
             android:screenOrientation="landscape" />
         <activity android:name=".SmokeMiniGameActivity"
             android:screenOrientation="landscape"/>
+        <activity android:name=".CollectItemsActivity"
+            android:screenOrientation="landscape"/>
+
 
     </application>
 

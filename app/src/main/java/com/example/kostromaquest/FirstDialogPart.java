@@ -25,6 +25,7 @@ public class FirstDialogPart extends AppCompatActivity {
     private  boolean dialoPanelIsHide = false; // true если блокируется и прячится диалог, иначе false
 
     private boolean miniGameisActiv = false;// true если игра была активирована
+    private boolean secondMiniGameisActiv = false;// true если игра была активирована
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,9 +149,15 @@ public class FirstDialogPart extends AppCompatActivity {
         dialogArray.addTextElement(new TextElement(17,"",""));//пропадает диалог ангар с воротами, где уже стоят запряженные в обозы лошади
         dialogArray.addTextElement(new TextElement(18,"","Верховой, немедленно отправляйся на место пожара!"));//
         dialogArray.addTextElement(new TextElement(19,"Верховой","Есть"));//
-
-
-
+        dialogArray.addTextElement(new TextElement(20," ","Самое время экипироваться."));//
+        dialogArray.addTextElement(new TextElement(21,"Пожарный ствольщик ","Дежурный все готовы!"));//миниигра
+        dialogArray.addTextElement(new TextElement(22," ","Уже заканчиваю! Опять все по новой"));//
+        dialogArray.addTextElement(new TextElement(23," ","Готов, отправляемся!"));//
+        dialogArray.addTextElement(new TextElement(24," ","Брандмейстер, труби, обозначай что мы выехали!"));//
+        dialogArray.addTextElement(new TextElement(25,"Брандмейстер","Ту-дуууууу!"));//
+        dialogArray.addTextElement(new TextElement(26,"Бобка","Гав-гав!!"));//
+        dialogArray.addTextElement(new TextElement(27,"Лошади","Иго-го-го-го-го!"));//
+        dialogArray.addTextElement(new TextElement(28,"",""));//
         // и т.д.
     }
 
@@ -260,7 +267,7 @@ public class FirstDialogPart extends AppCompatActivity {
             case 13:
                 dialogPanel.setAlpha(1f);
                 break;
-            case 14:
+            case 14: // миниигра
                 dialogPanel.setAlpha(0f);
                 if(!miniGameisActiv) {
                     Intent intent = new Intent(this, SmokeMiniGameActivity.class);
@@ -269,6 +276,11 @@ public class FirstDialogPart extends AppCompatActivity {
                 }
                 break;
             case 15:
+                if (dog != null) {
+                    dog.release();
+                    dog = null;
+                }
+
                 dialogPanel.setAlpha(1f);
 
                 if (mediaPlayer != null) {
@@ -294,9 +306,13 @@ public class FirstDialogPart extends AppCompatActivity {
                 break;
             case 17:
                 dialogPanel.setAlpha(0f);
-                backgroundImage.setImageResource(R.drawable.frame_9_10);
+                backgroundImage.setImageResource(R.drawable.frame_8_10);
                 break;
             case 18:
+                if (dog != null) {
+                    dog.release();
+                    dog = null;
+                }
                 dialogPanel.setAlpha(1f);
                 break;
             case 19:
@@ -308,6 +324,62 @@ public class FirstDialogPart extends AppCompatActivity {
                 dog = MediaPlayer.create(this, R.raw.hourse_nouse);
                 dog.setLooping(true);
                 dog.start();
+            case 20:
+                if (dog != null) {
+                    dog.release();
+                    dog = null;
+                }
+                break;
+            case 21: // Вторая мини-игра
+                dialogPanel.setAlpha(1f);
+                if (!secondMiniGameisActiv) {
+                    Intent intent = new Intent(this, CollectItemsActivity.class);
+                    startActivity(intent);
+                    secondMiniGameisActiv = true;
+                }
+                break;
+            case 22:
+
+                break;
+
+            case 23:
+                backgroundImage.setImageResource(R.drawable.frame_8_10);
+                break;
+            case 24:
+                break;
+            case 25:
+                if (dog != null) {
+                    dog.release();
+                    dog = null;
+                }
+
+                dog = MediaPlayer.create(this, R.raw.truba);
+                dog.setLooping(true);
+                dog.start();
+                break;
+            case 26:
+                if (dog != null) {
+                    dog.release();
+                    dog = null;
+                }
+                dog = MediaPlayer.create(this, R.raw.lay_sobaki);
+                dog.setLooping(true);
+                dog.start();
+                break;
+            case 27:
+                animateFullDim(2);
+                if (dog != null) {
+                    dog.release();
+                    dog = null;
+                }
+                dog = MediaPlayer.create(this, R.raw.hourse_nouse);
+                dog.setLooping(true);
+                dog.start();
+                break;
+            case 28:
+                animateFullDim(3);
+                break;
+
         }
     }
 

@@ -10,5 +10,10 @@
     <color name="md_theme_dark_primaryContainer">#4E342E</color>
     <color name="md_theme_dark_onPrimaryContainer">#FFFFFF</color>
 
+
+        <color name="selected_option">#A5D6A7</color> <!-- светло-зелёный -->
+        <color name="wrong_answer">#EF9A9A</color>     <!-- светло-красный -->
+
+
     <!-- Можно добавить другие цвета: secondary, background, surface и т.д. -->
 </resources>
