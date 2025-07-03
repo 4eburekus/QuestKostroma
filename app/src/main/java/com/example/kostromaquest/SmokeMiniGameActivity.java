@@ -1,6 +1,7 @@
 package com.example.kostromaquest;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
@@ -14,14 +15,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.HorizontalScrollView;
 
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
+
 public class SmokeMiniGameActivity extends Activity implements View.OnTouchListener {
 
     private ImageView panoramaImage;
     private TextView messageText;
     private HorizontalScrollView scrollView;
 
-    private final float SMOKE_X = 490;
-    private final float SMOKE_Y = 220;
+    private final float SMOKE_X = 215;
+    private final float SMOKE_Y = 180;
     private final float THRESHOLD = 110;
     private final float HIGHLIGHT_RADIUS = 100;
 
@@ -43,6 +48,35 @@ public class SmokeMiniGameActivity extends Activity implements View.OnTouchListe
         originalBitmap = ((BitmapDrawable) panoramaImage.getDrawable()).getBitmap();
         highlightedBitmap = originalBitmap.copy(originalBitmap.getConfig(), true);
         panoramaImage.setImageBitmap(highlightedBitmap);
+
+
+        // Начало убирания шторки
+
+        // Блокируем вертикальную ориентацию
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        // Делаем так, чтобы контент приложения растягивался под системные панели
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+
+        // Получаем контроллер для управления системными панелями
+        WindowInsetsControllerCompat windowInsetsController =
+                WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        if (windowInsetsController == null) {
+            return;
+        }
+
+        // Скрываем строку состояния
+        windowInsetsController.hide(WindowInsetsCompat.Type.statusBars());
+
+        // Опционально: скрываем навигационную панель
+        windowInsetsController.hide(WindowInsetsCompat.Type.navigationBars());
+
+        // Устанавливаем поведение: системные панели появятся при свайпе от края
+        windowInsetsController.setSystemBarsBehavior(
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+
+        // Конец убирания шторки
+
     }
 
     @Override
