@@ -48,10 +48,10 @@ public class FirstDialogPart extends AppCompatActivity {
 
         ////////////////////////////////////// пока не пригодится //////////////////////////////////////
 // Задать картинку
-        //  characterView.setCharacterImage(R.drawable.pngegg);
+         characterView.setCharacterImage(R.drawable.pustaia);
         //yeenImage.setCharacterImage(R.drawable.pustaia);
 // Сдвинуть влево (пример: -150 = левый край, 0 = центр, 150 = правый край)
-        //characterView.setHorizontalOffset(-150); // влево
+        characterView.setHorizontalOffset(-250); // влево
         //yeenImage.setHorizontalOffset(+150);
 
         ////////////////////////////////////// пока не пригодится //////////////////////////////////////
@@ -181,6 +181,17 @@ public class FirstDialogPart extends AppCompatActivity {
         dialogArray.addTextElement(new TextElement(29,"Рассказчик","Бобка устремляется в глубь горящего здания.")); //
         dialogArray.addTextElement(new TextElement(30,"","Бобка, ты свою работу знаешь.")); //
         dialogArray.addTextElement(new TextElement(31,"","За работу мужики!")); //
+        dialogArray.addTextElement(new TextElement(32,"","")); //Кадр13: Бобка выпрыгивает из двери со сверху сидящем на нем ребенком
+        dialogArray.addTextElement(new TextElement(33,"","Хорошая работа Бобка, ты молодец!"));
+        dialogArray.addTextElement(new TextElement(34,"Бобка","Гав-гав!"));
+        dialogArray.addTextElement(new TextElement(35,"Cтвольщик","Докладываю. Возгорание успешно потушено, погибших и раненых не обнаружено!"));
+        dialogArray.addTextElement(new TextElement(36,"","Отлично. Пожарный расчет, возвращаемся!"));
+        dialogArray.addTextElement(new TextElement(37,"",""));//Кадр14: фото пожарного расчета у каланчи
+        dialogArray.addTextElement(new TextElement(38,"Рассказчик","Еще один пожар был потушен и все благодаря отважным людям бросающимися в огонь раз за разом."));//Окно диалога появляется
+        dialogArray.addTextElement(new TextElement(39,"Рассказчик","Так и закончился этот изнурительный для пожарных день."));
+        dialogArray.addTextElement(new TextElement(40,"Рассказчик","Конец."));
+        dialogArray.addTextElement(new TextElement(41,"",""));
+
     }
 
 
@@ -226,7 +237,7 @@ public class FirstDialogPart extends AppCompatActivity {
             case 4:
                 fadeImageTransition(R.drawable.frame_3, 500);
                 dialogPanel.setAlpha(1f);
-
+                characterView.setCharacterImage(R.drawable.rabotyaga);
                 mediaPlayer = MediaPlayer.create(this, R.raw.calm_music);
                 mediaPlayer.setLooping(true);
                 mediaPlayer.start();
@@ -244,6 +255,7 @@ public class FirstDialogPart extends AppCompatActivity {
                 dog.start();
                 break;
             case 6:
+                characterView.setCharacterImage(R.drawable.pustaia);
                 if (dog != null) dog.release();
                 if (!dialogIsEnabled) dialogPanel.setAlpha(1f);
                 dog = MediaPlayer.create(this, R.raw.lay_sobaki);
@@ -259,22 +271,27 @@ public class FirstDialogPart extends AppCompatActivity {
                 }
                 break;
             case 8:
+                characterView.setCharacterImage(R.drawable.rabotyaga);
                 dialogPanel.setAlpha(1f);
                 backgroundImage.setImageResource(R.drawable.frame_5);
                 break;
             case 9:
+                characterView.setCharacterImage(R.drawable.pustaia);
                 fadeImageTransition(R.drawable.frame_6, 500);
                 break;
             case 10:
+                characterView.setCharacterImage(R.drawable.pustaia);
                 break;
             case 11:
+                characterView.setCharacterImage(R.drawable.rabotyaga);
                 if (!dialogIsEnabled) dialogPanel.setAlpha(1f);
                 break;
             case 12:
-                fadeImageTransition(R.drawable.panorama, 500);
+                fadeImageTransition(R.drawable.panorama_without_fire, 500);
                 dialogPanel.setAlpha(0f);
                 break;
             case 13:
+                characterView.setCharacterImage(R.drawable.pustaia);
                 if (!dialogIsEnabled) dialogPanel.setAlpha(1f);
                 dialogPanel.setAlpha(1f);
                 break;
@@ -304,22 +321,27 @@ public class FirstDialogPart extends AppCompatActivity {
                 dog.setLooping(true);
                 dog.start();
                 if (!dialogIsEnabled) dialogPanel.setAlpha(1f);
+                characterView.setCharacterImage(R.drawable.rabotyaga);
                 break;
             case 16:
+                characterView.setCharacterImage(R.drawable.pustaia);
                 dialogPanel.setAlpha(0f);
                 fadeImageTransition(R.drawable.frame_8_10, 500);
                 break;
             case 17:
+                characterView.setCharacterImage(R.drawable.rabotyaga);
                 if (dog != null) dog.release();
                 dialogPanel.setAlpha(1f);
                 break;
             case 18:
+                characterView.setCharacterImage(R.drawable.pustaia);
                 if (dog != null) dog.release();
                 dog = MediaPlayer.create(this, R.raw.hourse_nouse);
                 dog.setLooping(true);
                 dog.start();
                 break;
             case 19:
+                characterView.setCharacterImage(R.drawable.rabotyaga);
                 if (dog != null) dog.release();
                 break;
             case 20: // бывший 21
@@ -331,6 +353,7 @@ public class FirstDialogPart extends AppCompatActivity {
                 }
                 break;
             case 21: // бывший 23
+                characterView.setCharacterImage(R.drawable.rabotyaga);
                 fadeImageTransition(R.drawable.frame_8_10, 500);
                 break;
             case 22:
@@ -340,8 +363,10 @@ public class FirstDialogPart extends AppCompatActivity {
                 dog = MediaPlayer.create(this, R.raw.truba);
                 dog.setLooping(true);
                 dog.start();
+                characterView.setCharacterImage(R.drawable.rabotyaga);
                 break;
             case 24:
+                characterView.setCharacterImage(R.drawable.pustaia);
                 if (dog != null) dog.release();
                 dog = MediaPlayer.create(this, R.raw.lay_sobaki);
                 dog.setLooping(true);
@@ -355,21 +380,83 @@ public class FirstDialogPart extends AppCompatActivity {
                 dog.start();
                 break;
             case 26:
+                if (dog != null) dog.release();
                 mediaPlayer = MediaPlayer.create(this, R.raw.music_is_tense_1);
                 mediaPlayer.setLooping(true);
                 mediaPlayer.start();
-
+                characterView.setCharacterImage(R.drawable.pustaia);
                 fadeImageTransition(R.drawable.frame_11, 500);
                 break;
             case 27:
-
+                if (dog != null) dog.release();
+                characterView.setCharacterImage(R.drawable.rabotyaga);
                 break;
             case 28:
                 mediaPlayer = MediaPlayer.create(this, R.raw.lay_sobaki);
                 mediaPlayer.setLooping(true);
                 mediaPlayer.start();
                 break;
+            case 29:
+                if (dog != null) dog.release();
+                characterView.setCharacterImage(R.drawable.pustaia);
+                break;
+            case 30:
+                characterView.setCharacterImage(R.drawable.rabotyaga);
+                break;
+            case 31:
+                characterView.setCharacterImage(R.drawable.rabotyaga);
+                dialogPanel.setAlpha(1f);
 
+                break;
+            case 32:
+                Intent ming = new Intent(this, FireGameActivity.class);
+                startActivity(ming);
+                characterView.setCharacterImage(R.drawable.pustaia);
+                fadeImageTransition(R.drawable.frame_13, 500);
+                mediaPlayer = MediaPlayer.create(this, R.raw.heroicmusic);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.start();
+                dialogPanel.setAlpha(0f);
+                break;
+            case 33:
+                break;
+            case 34:
+                characterView.setCharacterImage(R.drawable.pustaia);
+                if (dog != null) dog.release();
+                dialogPanel.setAlpha(1f);
+                dog = MediaPlayer.create(this, R.raw.lay_sobaki);
+                dog.setLooping(true);
+                dog.start();
+                break;
+            case 35:
+                characterView.setCharacterImage(R.drawable.pustaia);
+                break;
+            case 36:
+                dialogPanel.setAlpha(1f);
+                characterView.setCharacterImage(R.drawable.rabotyaga);
+                break;
+            case 37:
+                dialogPanel.setAlpha(0f);
+                characterView.setCharacterImage(R.drawable.pustaia);
+                fadeImageTransition(R.drawable.frame_14, 500);
+                break;
+            case 38:
+                characterView.setCharacterImage(R.drawable.pustaia);
+                dialogPanel.setAlpha(1f);
+                fadeImageTransition(R.drawable.frame_14, 500);
+                break;
+            case 39:
+                dialogPanel.setAlpha(1f);
+                fadeImageTransition(R.drawable.frame_14, 500);
+                break;
+            case 40:
+                dialogPanel.setAlpha(1f);
+                fadeImageTransition(R.drawable.frame_14, 500);
+                break;
+            case 41:
+                Intent mMenu = new Intent(this, MainActivity.class);
+                startActivity(mMenu);
+                break;
         }
 
 

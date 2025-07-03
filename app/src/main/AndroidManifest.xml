@@ -28,8 +28,8 @@
             android:screenOrientation="landscape"/>
         <activity android:name=".CollectItemsActivity"
             android:screenOrientation="landscape"/>
-
-
+        <activity android:name=".FireGameActivity"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>
