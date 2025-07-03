@@ -3,6 +3,7 @@ package com.example.kostromaquest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        Button startButton = findViewById(R.id.start_button);
+        ImageButton startButton = findViewById(R.id.start_button);
         startButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, FirstDialogPart.class);
             startActivity(intent);

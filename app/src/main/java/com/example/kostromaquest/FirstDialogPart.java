@@ -42,7 +42,7 @@ public class FirstDialogPart extends AppCompatActivity {
         backButton = findViewById(R.id.back_button);
 
         // Инициализация музыки
-        mediaPlayer = MediaPlayer.create(this, R.raw.whiteorchards);
+        mediaPlayer = MediaPlayer.create(this, R.raw.heroicmusic);
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
 
@@ -151,35 +151,38 @@ public class FirstDialogPart extends AppCompatActivity {
 
         dialogArray.addTextElement(new TextElement(0, " ", " Кострома – город, где каждый третий дом был деревянным, а каждый второй пожар – смертельным."));
         dialogArray.addTextElement(new TextElement(1, " ", "Но там, где люди бежали прочь, они шли вперёд – пожарные. А впереди всех мчался Бобка, рыжий великан, спасавший детей из огня…"));
-        dialogArray.addTextElement(new TextElement(2, " ", " "));//экран собаки
-        dialogArray.addTextElement(new TextElement(3," "," "));//для экрана с затемнением
-        dialogArray.addTextElement(new TextElement(4," ","Ветер с востока… Сухо. Будет пожар – чувствую"));//вид на каланчу со сковородки
+        dialogArray.addTextElement(new TextElement(2, " ", " ")); // экран собаки
+        dialogArray.addTextElement(new TextElement(3," "," ")); // для экрана с затемнением
+        dialogArray.addTextElement(new TextElement(4," ","Ветер с востока… Сухо. Будет пожар – чувствую"));
         dialogArray.addTextElement(new TextElement(5," ","Привет, Бобка, как дела? "));
         dialogArray.addTextElement(new TextElement(6,"Бобка ","Гав-гав!"));
-        dialogArray.addTextElement(new TextElement(7," ",""));//кабинет начальника
-        dialogArray.addTextElement(new TextElement(8," ","Товарищ начальник, дежурный прибыл."));//кабинет начальникаDialog
+        dialogArray.addTextElement(new TextElement(7," ","")); // кабинет начальника
+        dialogArray.addTextElement(new TextElement(8," ","Товарищ начальник, дежурный прибыл."));
         dialogArray.addTextElement(new TextElement(9,"Начальник","Проверишь команду, снаряжение и на площадку. "));
         dialogArray.addTextElement(new TextElement(10,"Начальник","И смотри в оба! Ветер сегодня сильный и погода сухая."));
         dialogArray.addTextElement(new TextElement(11,"","Есть"));
         dialogArray.addTextElement(new TextElement(12,"",""));
         dialogArray.addTextElement(new TextElement(13,"","Кострома… Как всегда красива ты…"));
-        dialogArray.addTextElement(new TextElement(14,"",""));
-        dialogArray.addTextElement(new TextElement(15,"","Нашел чертягу! Тревога!"));
-        dialogArray.addTextElement(new TextElement(16,""," Бью в колокол!"));
-        dialogArray.addTextElement(new TextElement(17,"",""));//пропадает диалог ангар с воротами, где уже стоят запряженные в обозы лошади
-        dialogArray.addTextElement(new TextElement(18,"","Верховой, немедленно отправляйся на место пожара!"));//
-        dialogArray.addTextElement(new TextElement(19,"Верховой","Есть"));//
-        dialogArray.addTextElement(new TextElement(20," ","Самое время экипироваться."));//
-        dialogArray.addTextElement(new TextElement(21,"Ствольщик ","Дежурный все готовы!"));//миниигра
-        dialogArray.addTextElement(new TextElement(22," ","Уже заканчиваю! Опять все по новой"));//
-        dialogArray.addTextElement(new TextElement(23," ","Готов, отправляемся!"));//
-        dialogArray.addTextElement(new TextElement(24," ","Брандмейстер, труби, обозначай что мы выехали!"));//
-        dialogArray.addTextElement(new TextElement(25,"Брандмейстер","Ту-дуууууу!"));//
-        dialogArray.addTextElement(new TextElement(26,"Бобка","Гав-гав!!"));//
-        dialogArray.addTextElement(new TextElement(27,"Лошади","Иго-го-го-го-го!"));//
-        dialogArray.addTextElement(new TextElement(28,"",""));//
-        // и т.д.
+        dialogArray.addTextElement(new TextElement(14,"","Нашел чертягу! Тревога!")); // бывший 15
+        dialogArray.addTextElement(new TextElement(15,""," Бью в колокол!")); // бывший 16
+        dialogArray.addTextElement(new TextElement(16,"","")); // бывший 17
+        dialogArray.addTextElement(new TextElement(17,"","Верховой, немедленно отправляйся на место пожара!"));
+        dialogArray.addTextElement(new TextElement(18,"Верховой","Есть"));
+        dialogArray.addTextElement(new TextElement(19," ","Самое время экипироваться."));
+        dialogArray.addTextElement(new TextElement(20,"Ствольщик ","Дежурный все готовы!")); // миниигра
+        dialogArray.addTextElement(new TextElement(21," ","Готов, отправляемся!")); // бывший 23
+        dialogArray.addTextElement(new TextElement(22," ","Брандмейстер, труби, обозначай что мы выехали!")); // бывший 24
+        dialogArray.addTextElement(new TextElement(23,"Брандмейстер","Ту-дуууууу!")); // бывший 25
+        dialogArray.addTextElement(new TextElement(24,"Бобка","Гав-гав!!")); // бывший 26
+        dialogArray.addTextElement(new TextElement(25,"Лошади","Иго-го-го-го-го!")); // бывший 27
+        dialogArray.addTextElement(new TextElement(26,"","")); // бывший 28 Мини-игра №3: «Потуши пожар»
+        dialogArray.addTextElement(new TextElement(27,"","Пожарный расчет прибыл!")); //return dialog
+        dialogArray.addTextElement(new TextElement(28,"Бобка","Гав-гав!")); //
+        dialogArray.addTextElement(new TextElement(29,"Рассказчик","Бобка устремляется в глубь горящего здания.")); //
+        dialogArray.addTextElement(new TextElement(30,"","Бобка, ты свою работу знаешь.")); //
+        dialogArray.addTextElement(new TextElement(31,"","За работу мужики!")); //
     }
+
 
     public TextElement getCurrentTextElement() {
         return dialogArray.getCurrentElement();
@@ -194,35 +197,21 @@ public class FirstDialogPart extends AppCompatActivity {
 
 
 // Обновляем картинку персонажа в зависимости от индекса диалога
+        // Обновляем картинку персонажа в зависимости от индекса диалога
         switch (dialogArray.getCurrentIndex()) {
             case 0:
-
                 break;
             case 1:
-                if (dog != null) {
-                    dog.release();
-                }
-
-                if(!dialogIsEnabled)
-                {
-                    dialogPanel.setAlpha(1f);
-                }
-
+                if (dog != null) dog.release();
+                if (!dialogIsEnabled) dialogPanel.setAlpha(1f);
                 dialogPanel.show();
                 backgroundImage.setImageResource(R.drawable.frame_1);
-
                 break;
-            case 2://экран собаки
-                //dialogPanel.hide();
-                dialogPanel.setAlpha(0f); // сокрытие диалога
-
+            case 2:
+                dialogPanel.setAlpha(0f);
                 dialogIsEnabled = false;
-                //backgroundImage.setImageResource(R.drawable.frame_2); // резкий переход между задними фонами
-                fadeImageTransition(R.drawable.frame_2, 500); // плавный переход между задними фонами
-                if (dog != null) {
-                    dog.release();
-                }
-
+                fadeImageTransition(R.drawable.frame_2, 500);
+                if (dog != null) dog.release();
                 dog = MediaPlayer.create(this, R.raw.lay_sobaki);
                 dog.setLooping(true);
                 dog.start();
@@ -233,45 +222,33 @@ public class FirstDialogPart extends AppCompatActivity {
                     dog.release();
                     dog = null;
                 }
-                //backgroundImage.setImageResource(R.drawable.frame_3);
                 break;
             case 4:
-                //backgroundImage.setImageResource(R.drawable.frame_3);
                 fadeImageTransition(R.drawable.frame_3, 500);
                 dialogPanel.setAlpha(1f);
+
+                mediaPlayer = MediaPlayer.create(this, R.raw.calm_music);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.start();
+
                 if (dog != null) {
                     dog.release();
                     dog = null;
                 }
                 break;
             case 5:
-                //backgroundImage.setImageResource(R.drawable.frame_4);
                 fadeImageTransition(R.drawable.frame_4, 500);
-                if (dog != null) {
-                    dog.release();
-                    dog = null;
-                }
-
+                if (dog != null) dog.release();
                 dog = MediaPlayer.create(this, R.raw.dog_panting_6876);
                 dog.setLooping(true);
                 dog.start();
-
                 break;
             case 6:
-
-                if (dog != null) {
-                    dog.release();
-                    dog = null;
-                }
-                if(!dialogIsEnabled)
-                {
-                    dialogPanel.setAlpha(1f);
-                }
-
+                if (dog != null) dog.release();
+                if (!dialogIsEnabled) dialogPanel.setAlpha(1f);
                 dog = MediaPlayer.create(this, R.raw.lay_sobaki);
                 dog.setLooping(true);
                 dog.start();
-
                 break;
             case 7:
                 dialogPanel.setAlpha(0f);
@@ -284,103 +261,68 @@ public class FirstDialogPart extends AppCompatActivity {
             case 8:
                 dialogPanel.setAlpha(1f);
                 backgroundImage.setImageResource(R.drawable.frame_5);
-                //fadeImageTransition(R.drawable.frame_5, 500);
                 break;
             case 9:
-                //backgroundImage.setImageResource(R.drawable.frame_6);
                 fadeImageTransition(R.drawable.frame_6, 500);
                 break;
             case 10:
                 break;
             case 11:
-                if(!dialogIsEnabled)
-                {
-                    dialogPanel.setAlpha(1f);
-                }
+                if (!dialogIsEnabled) dialogPanel.setAlpha(1f);
                 break;
             case 12:
-                //backgroundImage.setImageResource(R.drawable.panorama);
                 fadeImageTransition(R.drawable.panorama, 500);
                 dialogPanel.setAlpha(0f);
                 break;
             case 13:
-                if(!dialogIsEnabled)
-                {
-                    dialogPanel.setAlpha(1f);
-                }
+                if (!dialogIsEnabled) dialogPanel.setAlpha(1f);
                 dialogPanel.setAlpha(1f);
                 break;
-            case 14: // миниигра
-                dialogPanel.setAlpha(0f);
-                if(!miniGameisActiv) {
-                    Intent intent = new Intent(this, SmokeMiniGameActivity.class);
-                    startActivity(intent);
-                    miniGameisActiv = !miniGameisActiv;
-                }
-                break;
-            case 15:
+            case 14: // бывший 15 — мини-игра + фраза "Нашел чертягу! Тревога!"
                 if (dog != null) {
                     dog.release();
                     dog = null;
                 }
-
                 dialogPanel.setAlpha(1f);
-
                 if (mediaPlayer != null) {
                     mediaPlayer.release();
                     mediaPlayer = null;
                 }
-
-                mediaPlayer = MediaPlayer.create(this, R.raw.death_knell);
+                mediaPlayer = MediaPlayer.create(this, R.raw.music_is_tense_2);
                 mediaPlayer.setLooping(true);
                 mediaPlayer.start();
 
-                break;
-            case 16:
-                if (dog != null) {
-                    dog.release();
-                    dog = null;
+                if (!miniGameisActiv) {
+                    Intent intent = new Intent(this, SmokeMiniGameActivity.class);
+                    startActivity(intent);
+                    miniGameisActiv = true;
                 }
-
+                break;
+            case 15:
+                if (dog != null) dog.release();
                 dog = MediaPlayer.create(this, R.raw.ring);
                 dog.setLooping(true);
                 dog.start();
-
-                if(!dialogIsEnabled)
-                {
-                    dialogPanel.setAlpha(1f);
-                }
-
+                if (!dialogIsEnabled) dialogPanel.setAlpha(1f);
                 break;
-            case 17:
-
+            case 16:
                 dialogPanel.setAlpha(0f);
-                //backgroundImage.setImageResource(R.drawable.frame_8_10);
                 fadeImageTransition(R.drawable.frame_8_10, 500);
                 break;
-            case 18:
-                if (dog != null) {
-                    dog.release();
-                    dog = null;
-                }
+            case 17:
+                if (dog != null) dog.release();
                 dialogPanel.setAlpha(1f);
                 break;
-            case 19:
-                if (dog != null) {
-                    dog.release();
-                    dog = null;
-                }
-
+            case 18:
+                if (dog != null) dog.release();
                 dog = MediaPlayer.create(this, R.raw.hourse_nouse);
                 dog.setLooping(true);
                 dog.start();
-            case 20:
-                if (dog != null) {
-                    dog.release();
-                    dog = null;
-                }
                 break;
-            case 21: // Вторая мини-игра
+            case 19:
+                if (dog != null) dog.release();
+                break;
+            case 20: // бывший 21
                 dialogPanel.setAlpha(1f);
                 if (!secondMiniGameisActiv) {
                     Intent intent = new Intent(this, CollectItemsActivity.class);
@@ -388,50 +330,48 @@ public class FirstDialogPart extends AppCompatActivity {
                     secondMiniGameisActiv = true;
                 }
                 break;
-            case 22:
-
-                break;
-
-            case 23:
-                //backgroundImage.setImageResource(R.drawable.frame_8_10);
+            case 21: // бывший 23
                 fadeImageTransition(R.drawable.frame_8_10, 500);
                 break;
-            case 24:
+            case 22:
                 break;
-            case 25:
-                if (dog != null) {
-                    dog.release();
-                    dog = null;
-                }
-
+            case 23:
+                if (dog != null) dog.release();
                 dog = MediaPlayer.create(this, R.raw.truba);
                 dog.setLooping(true);
                 dog.start();
                 break;
-            case 26:
-                if (dog != null) {
-                    dog.release();
-                    dog = null;
-                }
+            case 24:
+                if (dog != null) dog.release();
                 dog = MediaPlayer.create(this, R.raw.lay_sobaki);
                 dog.setLooping(true);
                 dog.start();
                 break;
-            case 27:
+            case 25:
                 animateFullDim(2);
-                if (dog != null) {
-                    dog.release();
-                    dog = null;
-                }
+                if (dog != null) dog.release();
                 dog = MediaPlayer.create(this, R.raw.hourse_nouse);
                 dog.setLooping(true);
                 dog.start();
                 break;
+            case 26:
+                mediaPlayer = MediaPlayer.create(this, R.raw.music_is_tense_1);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.start();
+
+                fadeImageTransition(R.drawable.frame_11, 500);
+                break;
+            case 27:
+
+                break;
             case 28:
-                animateFullDim(3);
+                mediaPlayer = MediaPlayer.create(this, R.raw.lay_sobaki);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.start();
                 break;
 
         }
+
 
 
     }

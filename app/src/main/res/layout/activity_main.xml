@@ -14,14 +14,16 @@
         android:scaleType="centerCrop"
         android:src="@drawable/frame_1" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
         android:id="@+id/start_button"
-        android:text="Начать игру"
+        android:layout_width="250dp"
+        android:layout_height="75dp"
+        android:background="@drawable/button_selector"
+        android:contentDescription="My Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
