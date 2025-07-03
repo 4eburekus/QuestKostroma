@@ -1,6 +1,7 @@
 package com.example.kostromaquest;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.media.MediaPlayer;
@@ -11,6 +12,9 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 public class FirstDialogPart extends AppCompatActivity {
     private DialogPanel dialogPanel;
@@ -45,6 +49,37 @@ public class FirstDialogPart extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(this, R.raw.heroicmusic);
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
+
+
+
+
+        // Начало убирания шторки
+
+        // Блокируем вертикальную ориентацию
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        // Делаем так, чтобы контент приложения растягивался под системные панели
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+
+        // Получаем контроллер для управления системными панелями
+        WindowInsetsControllerCompat windowInsetsController =
+                WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        if (windowInsetsController == null) {
+            return;
+        }
+
+        // Скрываем строку состояния
+        windowInsetsController.hide(WindowInsetsCompat.Type.statusBars());
+
+        // Опционально: скрываем навигационную панель
+        windowInsetsController.hide(WindowInsetsCompat.Type.navigationBars());
+
+        // Устанавливаем поведение: системные панели появятся при свайпе от края
+        windowInsetsController.setSystemBarsBehavior(
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+
+        // Конец убирания шторки
+
 
         ////////////////////////////////////// пока не пригодится //////////////////////////////////////
 // Задать картинку
@@ -223,9 +258,13 @@ public class FirstDialogPart extends AppCompatActivity {
                 dialogIsEnabled = false;
                 fadeImageTransition(R.drawable.frame_2, 500);
                 if (dog != null) dog.release();
+                if(mediaPlayer!= null){mediaPlayer.release();}
                 dog = MediaPlayer.create(this, R.raw.lay_sobaki);
                 dog.setLooping(true);
                 dog.start();
+                mediaPlayer = MediaPlayer.create(this, R.raw.calm_music);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.start();
                 break;
             case 3:
                 animateFullDim(3);
@@ -238,9 +277,7 @@ public class FirstDialogPart extends AppCompatActivity {
                 fadeImageTransition(R.drawable.frame_3, 500);
                 dialogPanel.setAlpha(1f);
                 characterView.setCharacterImage(R.drawable.rabotyaga);
-                mediaPlayer = MediaPlayer.create(this, R.raw.calm_music);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.start();
+
 
                 if (dog != null) {
                     dog.release();
@@ -248,6 +285,7 @@ public class FirstDialogPart extends AppCompatActivity {
                 }
                 break;
             case 5:
+
                 fadeImageTransition(R.drawable.frame_4, 500);
                 if (dog != null) dog.release();
                 dog = MediaPlayer.create(this, R.raw.dog_panting_6876);
@@ -392,9 +430,9 @@ public class FirstDialogPart extends AppCompatActivity {
                 characterView.setCharacterImage(R.drawable.rabotyaga);
                 break;
             case 28:
-                mediaPlayer = MediaPlayer.create(this, R.raw.lay_sobaki);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.start();
+                dog = MediaPlayer.create(this, R.raw.lay_sobaki);
+                dog.setLooping(true);
+                dog.start();
                 break;
             case 29:
                 if (dog != null) dog.release();
@@ -429,6 +467,7 @@ public class FirstDialogPart extends AppCompatActivity {
                 dog.start();
                 break;
             case 35:
+                if (dog != null) dog.release();
                 characterView.setCharacterImage(R.drawable.pustaia);
                 break;
             case 36:
