@@ -1,6 +1,8 @@
 package com.example.kostromaquest;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 public class FirstDialogPart extends AppCompatActivity {
     private DialogPanel dialogPanel;
@@ -26,6 +29,8 @@ public class FirstDialogPart extends AppCompatActivity {
 
     private boolean miniGameisActiv = false;// true если игра была активирована
     private boolean secondMiniGameisActiv = false;// true если игра была активирована
+
+    private boolean dialogIsEnabled = true; // false - если диалог отключен
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +89,21 @@ public class FirstDialogPart extends AppCompatActivity {
         });
 
 
+    }
+
+    private void fadeImageTransition(int newImageResId, int durationMillis) {
+        Drawable currentDrawable = backgroundImage.getDrawable();
+        Drawable newDrawable = ContextCompat.getDrawable(this, newImageResId);
+
+        if (currentDrawable == null) {
+            backgroundImage.setImageDrawable(newDrawable);
+            return;
+        }
+
+        Drawable[] layers = new Drawable[]{currentDrawable, newDrawable};
+        TransitionDrawable transitionDrawable = new TransitionDrawable(layers);
+        backgroundImage.setImageDrawable(transitionDrawable);
+        transitionDrawable.startTransition(durationMillis);
     }
 
     /**
@@ -150,7 +170,7 @@ public class FirstDialogPart extends AppCompatActivity {
         dialogArray.addTextElement(new TextElement(18,"","Верховой, немедленно отправляйся на место пожара!"));//
         dialogArray.addTextElement(new TextElement(19,"Верховой","Есть"));//
         dialogArray.addTextElement(new TextElement(20," ","Самое время экипироваться."));//
-        dialogArray.addTextElement(new TextElement(21,"Пожарный ствольщик ","Дежурный все готовы!"));//миниигра
+        dialogArray.addTextElement(new TextElement(21,"Ствольщик ","Дежурный все готовы!"));//миниигра
         dialogArray.addTextElement(new TextElement(22," ","Уже заканчиваю! Опять все по новой"));//
         dialogArray.addTextElement(new TextElement(23," ","Готов, отправляемся!"));//
         dialogArray.addTextElement(new TextElement(24," ","Брандмейстер, труби, обозначай что мы выехали!"));//
@@ -183,15 +203,22 @@ public class FirstDialogPart extends AppCompatActivity {
                     dog.release();
                 }
 
+                if(!dialogIsEnabled)
+                {
+                    dialogPanel.setAlpha(1f);
+                }
+
                 dialogPanel.show();
                 backgroundImage.setImageResource(R.drawable.frame_1);
 
                 break;
-            case 2:
+            case 2://экран собаки
                 //dialogPanel.hide();
-                dialogPanel.setAlpha(0f);
-                backgroundImage.setImageResource(R.drawable.frame_2);
+                dialogPanel.setAlpha(0f); // сокрытие диалога
 
+                dialogIsEnabled = false;
+                //backgroundImage.setImageResource(R.drawable.frame_2); // резкий переход между задними фонами
+                fadeImageTransition(R.drawable.frame_2, 500); // плавный переход между задними фонами
                 if (dog != null) {
                     dog.release();
                 }
@@ -209,7 +236,8 @@ public class FirstDialogPart extends AppCompatActivity {
                 //backgroundImage.setImageResource(R.drawable.frame_3);
                 break;
             case 4:
-                backgroundImage.setImageResource(R.drawable.frame_3);
+                //backgroundImage.setImageResource(R.drawable.frame_3);
+                fadeImageTransition(R.drawable.frame_3, 500);
                 dialogPanel.setAlpha(1f);
                 if (dog != null) {
                     dog.release();
@@ -217,8 +245,8 @@ public class FirstDialogPart extends AppCompatActivity {
                 }
                 break;
             case 5:
-                backgroundImage.setImageResource(R.drawable.frame_4);
-
+                //backgroundImage.setImageResource(R.drawable.frame_4);
+                fadeImageTransition(R.drawable.frame_4, 500);
                 if (dog != null) {
                     dog.release();
                     dog = null;
@@ -234,6 +262,10 @@ public class FirstDialogPart extends AppCompatActivity {
                 if (dog != null) {
                     dog.release();
                     dog = null;
+                }
+                if(!dialogIsEnabled)
+                {
+                    dialogPanel.setAlpha(1f);
                 }
 
                 dog = MediaPlayer.create(this, R.raw.lay_sobaki);
@@ -252,19 +284,30 @@ public class FirstDialogPart extends AppCompatActivity {
             case 8:
                 dialogPanel.setAlpha(1f);
                 backgroundImage.setImageResource(R.drawable.frame_5);
+                //fadeImageTransition(R.drawable.frame_5, 500);
                 break;
             case 9:
-                backgroundImage.setImageResource(R.drawable.frame_6);
+                //backgroundImage.setImageResource(R.drawable.frame_6);
+                fadeImageTransition(R.drawable.frame_6, 500);
                 break;
             case 10:
                 break;
             case 11:
+                if(!dialogIsEnabled)
+                {
+                    dialogPanel.setAlpha(1f);
+                }
                 break;
             case 12:
-                backgroundImage.setImageResource(R.drawable.panorama);
+                //backgroundImage.setImageResource(R.drawable.panorama);
+                fadeImageTransition(R.drawable.panorama, 500);
                 dialogPanel.setAlpha(0f);
                 break;
             case 13:
+                if(!dialogIsEnabled)
+                {
+                    dialogPanel.setAlpha(1f);
+                }
                 dialogPanel.setAlpha(1f);
                 break;
             case 14: // миниигра
@@ -303,10 +346,17 @@ public class FirstDialogPart extends AppCompatActivity {
                 dog.setLooping(true);
                 dog.start();
 
+                if(!dialogIsEnabled)
+                {
+                    dialogPanel.setAlpha(1f);
+                }
+
                 break;
             case 17:
+
                 dialogPanel.setAlpha(0f);
-                backgroundImage.setImageResource(R.drawable.frame_8_10);
+                //backgroundImage.setImageResource(R.drawable.frame_8_10);
+                fadeImageTransition(R.drawable.frame_8_10, 500);
                 break;
             case 18:
                 if (dog != null) {
@@ -343,7 +393,8 @@ public class FirstDialogPart extends AppCompatActivity {
                 break;
 
             case 23:
-                backgroundImage.setImageResource(R.drawable.frame_8_10);
+                //backgroundImage.setImageResource(R.drawable.frame_8_10);
+                fadeImageTransition(R.drawable.frame_8_10, 500);
                 break;
             case 24:
                 break;
@@ -381,6 +432,8 @@ public class FirstDialogPart extends AppCompatActivity {
                 break;
 
         }
+
+
     }
 
 
